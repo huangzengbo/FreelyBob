@@ -11,5 +11,6 @@ How to test?
 
 TODO:
 1. Google Analytic / Firebase
-2. Mock test
+2. Mock api test
 3. E2E test
+4. Functional test
