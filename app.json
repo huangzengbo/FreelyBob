@@ -1,0 +1,16 @@
+{
+  "name": "FreelyBob",
+  "displayName": "FreelyBob",
+  "staging": {
+    "ENVIRONMENT": "staging"
+  },
+  "development": {
+    "ENVIRONMENT": "development"
+  },
+  "e2e": {
+    "ENVIRONMENT": ""
+  },
+  "production": {
+    "ENVIRONMENT": ""
+  }
+}
