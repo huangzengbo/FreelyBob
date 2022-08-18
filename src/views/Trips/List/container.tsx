@@ -2,7 +2,12 @@ import React, {useEffect, useState} from 'react';
 import {AppState} from 'react-native';
 
 import {useSelector, useDispatch} from 'react-redux';
-import {fetchTripsAsync, resetTrips, selectTrips} from '../../../reducer/trips';
+import {
+  fetchTripsAsync,
+  resetTrips,
+  selectTrips,
+  selectTripsLoading,
+} from '../../../reducer/trips';
 import {
   TripsStackNavigationProps,
   TripStackNames,
@@ -15,7 +20,9 @@ interface ListingProps {
   navigation: TripsStackNavigationProps<TripStackNames.TRIPS_LIST>;
 }
 function TripsList(props: ListingProps): React.ReactElement {
-  const trips = useSelector(selectTrips).trips;
+  const trips = useSelector(selectTrips);
+  const tripsLoading = useSelector(selectTripsLoading);
+
   const [highlight, setHighlight] = useState(false);
 
   const dispatch = useDispatch();
@@ -38,9 +45,12 @@ function TripsList(props: ListingProps): React.ReactElement {
       tripItem: trip,
     });
   };
-
   const resetClick = () => {
-    dispatch(resetTrips());
+    if (trips.length === 0) {
+      dispatch(fetchTripsAsync());
+    } else {
+      dispatch(resetTrips());
+    }
   };
   return (
     <TripsComponent
@@ -48,6 +58,7 @@ function TripsList(props: ListingProps): React.ReactElement {
       onClick={tripClick}
       resetClick={resetClick}
       trips={trips}
+      isLoading={tripsLoading}
     />
   );
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import Text from '../Text';
+import {Text} from 'react-native';
 import {ErrorDisplay} from '../../constants/errors';
 
 function Error(): React.ReactElement {

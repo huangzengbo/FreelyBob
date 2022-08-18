@@ -3,10 +3,12 @@ import React, {ComponentProps, memo} from 'react';
 
 import Home from '../../assets/images/Home';
 import Trips from '../../assets/images/Trips';
+import Loading from '../../assets/images/Loading';
 
 const icon = {
   Home,
   Trips,
+  Loading,
 };
 
 type IconList = typeof icon;
